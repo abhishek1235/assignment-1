@@ -11,6 +11,9 @@ class HomePage extends ElementHelper {
 
 		this.tableRowElements = $$("table.computers.zebra-striped tbody tr");
 		this.tableComputerNameElements = $$("table.computers.zebra-striped tbody tr td:nth-child(1) a");
+		this.tableIntroducedDateElements = $$("table.computers.zebra-striped tbody tr td:nth-child(2)");
+		this.tableDiscontinuedDateElements = $$("table.computers.zebra-striped tbody tr td:nth-child(3)");
+
 		this.tableHeaderElements = $$("table.computers.zebra-striped thead tr th");
 
 		this.addNewComputerButton = $("#add");
@@ -42,6 +45,14 @@ class HomePage extends ElementHelper {
 
 	async getFirstColumnData() {
 		return await this.tableComputerNameElements.getText();
+	}
+
+	async getSecondcolumnData() {
+		return await this.tableIntroducedDateElements.getText();
+	}
+
+	async getThirdcolumnData() {
+		return await this.tableDiscontinuedDateElements.getText();
 	}
 
 	async getTotalComputerCount() {

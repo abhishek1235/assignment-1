@@ -4,6 +4,9 @@ import HomePage from '../pages/HomePage';
 import {browser} from 'protractor';
 import {Given, When, Then, setDefaultTimeout} from "cucumber";
 
+const _ = require('underscore');
+const moment = require('moment');
+
 setDefaultTimeout(500 * 1000);
 const globals = new Globals();
 const expect = globals.expect;
@@ -74,7 +77,8 @@ Given(/^I verify that the Current link displays "(.*?)" total number of computer
 
 When(/^I enter search string "(.*?)" in the search box and click on Filter by name button$/, async (search) => {
 	await homePage.filterByComputerNameEditBox.clear();
-	await homePage.filterByComputerNameEditBox.sendKeys(search);
+	if(search !="EMPTY")
+		await homePage.filterByComputerNameEditBox.sendKeys(search);
 	await homePage.filterByNameButton.click();
 });
 
@@ -130,7 +134,31 @@ Then(/^I verify the current link text after every click to next page on table$/,
 Then(/^I should see a message saying "(.*?)"$/, async (message) => {
 	expect(await homePage.nothingToDisplayMessage.isDisplayed()).to.be.true;
 	expect(await homePage.nothingToDisplayMessage.getText()).to.equal(message);
-	});
+});
+
+
+Then(/^I verify that default sorting order of Computers table with pagination is by computer name in ascending order$/, async () => {
+	while (await homePage.nextLinkEnabled.isPresent()) {
+		expect(await homePage.getFirstColumnSortedAsc()).to.have.ordered.members(await homePage.getFirstColumnData());
+		await homePage.nextLinkEnabled.click();
+	}
+	await homePage.getBackToFirstPage();
+});
+
+
+Then(/^I verify that the Introduced and Discontinued dates are either hyphen or a valid date$/, async () => {
+	let columnDataList = await homePage.getSecondcolumnData();
+	let columnDataWithout_ = _.without(columnDataList,'-');
+	let flag = false;
+	while (await homePage.nextLinkEnabled.isPresent()) {
+		if(columnDataWithout_.length > 0){
+			flag = _.every(columnDataWithout_,(data)=>{return moment(data, "DD MMM YYYY").isValid()});
+		}
+		expect(flag).to.be.true;
+		await homePage.nextLinkEnabled.click();
+	}
+	await homePage.getBackToFirstPage();
+});
 
 
 
