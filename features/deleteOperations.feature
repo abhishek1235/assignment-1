@@ -1,6 +1,6 @@
 Feature: To do Delete operation on the computers table
 
-	@DeleteOperations
+	@DeleteOperations @Delete001
 	Scenario: Delete one of the computers from the table
 		Given I am on play sample application page with title "Computers database"
 		When I enter search string "Lenovo 9876" in the search box and click on Filter by name button

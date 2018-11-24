@@ -26,12 +26,8 @@ exports.config = {
 		editOperations: ["./features/editOperations.feature"],
 		deleteOperations: ["./features/deleteOperations.feature"],
 	},
-	// allScriptsTimeout: 60000,
-	// getPageTimeout: 60000,
-	// setDefaultTimeout: 60000,
 
 	exclude: "./features/database.feature",
-	// resultJsonOutputFile: "./reports/json/protractor_report.json",
 	onPrepare: function() {
 		browser.ignoreSynchronization = true;
 		browser.manage().window().maximize();

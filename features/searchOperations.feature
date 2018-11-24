@@ -1,6 +1,6 @@
 Feature: To do search operation on the computers table by entering text in the search box
 
-	@searchOperations @Search001
+	@SearchOperations @Search001
 	Scenario: Search string completely matches the Computer Name in the table
 		Given I am on play sample application page with title "Computers database"
 		When I enter search string "Amiga 1200" in the search box and click on Filter by name button
@@ -10,7 +10,7 @@ Feature: To do search operation on the computers table by entering text in the s
 		And I verify that the number of clicks to Next and Previous link is equal to the number of pages present on the table
 
 
-	@searchOperations @Search002
+	@SearchOperations @Search002
 	Scenario: Search string partially matches the Computer Name in the table
 		Given I am on play sample application page with title "Computers database"
 		When I enter search string "Amiga" in the search box and click on Filter by name button
@@ -19,7 +19,7 @@ Feature: To do search operation on the computers table by entering text in the s
 		And I verify that the table contains the data for the search string "Amiga" and row count is greater than "1"
 		And I verify that the number of clicks to Next and Previous link is equal to the number of pages present on the table
 
-	@searchOperations @Search003
+	@SearchOperations @Search003
 	Scenario: Search string EMPTY matches all the Computer Name in the table
 		Given I am on play sample application page with title "Computers database"
 		When I enter search string "" in the search box and click on Filter by name button
@@ -31,7 +31,7 @@ Feature: To do search operation on the computers table by entering text in the s
 
 
 
-	@searchOperations @Search004
+	@SearchOperations @Search004
 	Scenario: Search string doesnot match any Computer Name in the table
 		Given I am on play sample application page with title "Computers database"
 		When I enter search string "abhishek" in the search box and click on Filter by name button

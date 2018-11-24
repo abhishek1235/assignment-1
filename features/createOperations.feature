@@ -37,4 +37,23 @@ Feature: To do Create operation on the computers table by adding new computers
 			|Lenovo 687  ||||
 
 
+	@CreateOperations @Create004
+	Scenario: Add a new Computer using invalid introduced and discontinued date
+		Given I am on play sample application page with title "Computers database"
+		When I click on Add a new computer button
+		Then "Add a computer" page should open
+		And I should not be able to successfully create a new computer using invalid introduced date
+			|computerName|introducedDate|discontinuedDate|company|
+			|Lenovo 643  |2011-15-34|2012-09-15|Lenovo Group|
+
+	@CreateOperations @Create005
+	Scenario: Add a new Computer using invalid introduced and discontinued date
+		Given I am on play sample application page with title "Computers database"
+		When I click on Add a new computer button
+		Then "Add a computer" page should open
+		And I should not be able to successfully create a new computer using invalid discontinued date
+			|computerName|introducedDate|discontinuedDate|company|
+			|Lenovo 643  |2011-09-15|2015-15-34|Lenovo Group|
+
+
 

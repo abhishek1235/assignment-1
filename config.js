@@ -10,6 +10,7 @@ exports.config = {
 		shardTestFiles: true,
 		maxInstances : 1,
 	},
+	// directConnect: true,
 	framework: "custom",
 	frameworkPath: require.resolve("protractor-cucumber-framework"),
 	suites: {
@@ -19,12 +20,8 @@ exports.config = {
 		editOperations: ["./features/editOperations.feature"],
 		deleteOperations: ["./features/deleteOperations.feature"],
 	},
-	// allScriptsTimeout: 60000,
-	// getPageTimeout: 60000,
-	// setDefaultTimeout: 60000,
 
 	exclude: "./features/database.feature",
-	// resultJsonOutputFile: "./reports/json/protractor_report.json",
 	onPrepare: function() {
 		browser.ignoreSynchronization = true;
 		browser.manage().window().maximize();
@@ -35,7 +32,7 @@ exports.config = {
 		strict: true,
 		format: 'json:./reports/json/cucumber_report.json',
 		require: ["./stepDefinitions/*.js", "./support/*.js"],
-		tags: "(@SanityTests or @searchOperations or @CreateOperations or @EditOperations or @DeleteOperations) and (not @DatabaseTest)",
+		tags: "(@SanityTests or @SearchOperations or @CreateOperations or @EditOperations or @DeleteOperations)",
 		keepAlive: false
 
 	},
