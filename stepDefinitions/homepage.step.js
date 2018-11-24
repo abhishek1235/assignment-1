@@ -144,7 +144,7 @@ Then(/^I verify the current link text after every click to next page on table$/,
 
 
 Then(/^Then I should see a message saying "(.*?)"$/, async (message) => {
-	expect(await homepageStep.nothingToDisplayMessage.isDisplayed()).to.be.true);
+	expect(await homepageStep.nothingToDisplayMessage.isDisplayed()).to.be.true;
 });
 
 
