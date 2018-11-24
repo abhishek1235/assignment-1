@@ -1,5 +1,6 @@
 .DS_Store
-reports/
+reports/json/*
+reports/html/*
 node_modules/
 .vscode
 .idea
